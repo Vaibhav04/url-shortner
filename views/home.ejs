@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0"
+          />
+          <title>Url shortner</title>
+     </head>
+     <body>
+          <h3>Url shortner</h3>
+          <form action="/url/create" method="POST">
+               <label for="url"></label>
+               <input type="text" name="url" id="url" />
+
+               <button type="submit">Create</button>
+          </form>
+
+          <table>
+               <thead>
+                    <tr>
+                         <td>Original</td>
+                         <td>Shorten url</td>
+                         <td>clicks</td>
+                    </tr>
+               </thead>
+
+               <tbody>
+                    <% urls.forEach(url => { %>
+                    <tr>
+                         <td><%= url.original %></td>
+                         <td>
+                              <a href="/url/<%= url.shortUrl %>">
+                                   <%= url.shortUrl %>
+                              </a>
+                         </td>
+                         <td><%= url.clicks %></td>
+                    </tr>
+                    <% }) %>
+               </tbody>
+          </table>
+     </body>
+</html>
